@@ -33,7 +33,7 @@ class TemperatureMeasurementManager(models.Manager):
             dt_delta = dt_max - dt_min
         return dt_delta
 
-    def users_with_temperature_gte_37(self):
+    def users_with_temperature_gte_37_today(self):
         date_today = datetime.date.today()
         qs = self.filter(datetime_measurement__year=date_today.year,
                          datetime_measurement__month=date_today.month,

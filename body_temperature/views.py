@@ -18,13 +18,13 @@ def index(request):
     dt_last_measurement = TemperatureMeasurement.objects.dt_last_measurement()
     average_temperature = TemperatureMeasurement.objects.average_temperature()
     users_count = User.objects.count()
-    top1_measurement_for_users_gte37 = TemperatureMeasurement.objects.users_with_temperature_gte_37()
+    users_with_temperature_gte_37_today = TemperatureMeasurement.objects.users_with_temperature_gte_37_today()
     context = {
         'top1_measurement_for_users': top1_measurement_for_users,
         'dt_last_measurement': dt_last_measurement,
         'average_temperature': average_temperature,
         'users_count': users_count,
-        'top1_measurement_for_users_gte37': top1_measurement_for_users_gte37
+        'users_with_temperature_gte_37_today': users_with_temperature_gte_37_today
     }
     return render(request, 'body_temperature/home.html', context=context)
 

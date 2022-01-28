@@ -17,7 +17,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for obj in top1_measurement_for_users_gte37 %}
+                        {% for obj in users_with_temperature_gte_37_today %}
                             <tr>
                             <td>{{ obj.datetime_measurement }}</td>
                             <td>{{ obj.temperature }} </td>
