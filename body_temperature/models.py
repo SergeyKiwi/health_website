@@ -27,7 +27,10 @@ class TemperatureMeasurementManager(models.Manager):
         dt_min = dt_min['datetime_measurement__min']
         dt_max = self.filter(user=user).aggregate(Max('datetime_measurement'))
         dt_max = dt_max['datetime_measurement__max']
-        dt_delta = dt_max-dt_min
+        if dt_max is None or dt_min is None:
+            dt_delta = datetime.timedelta(0)
+        else:
+            dt_delta = dt_max - dt_min
         return dt_delta
 
     def users_with_temperature_gte_37(self):

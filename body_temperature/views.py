@@ -35,6 +35,8 @@ def user_measurements(request, id):
     try:
         measurements = TemperatureMeasurement.objects.filter(user=user).order_by('-datetime_measurement')
         average_temperature = TemperatureMeasurement.objects.average_temperature_for_user(user)
+        if average_temperature is None:
+            average_temperature = '---'
         date_interval_for_user = TemperatureMeasurement.objects.date_interval_for_user(user)
         date_interval_for_user = td_format(date_interval_for_user)
     except ObjectDoesNotExist:
