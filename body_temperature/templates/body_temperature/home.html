@@ -1,0 +1,92 @@
+{% extends "body_temperature/base.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <br>
+    <div class="row">
+        <div class="col-lg-6 text-center">
+            <div class="border">
+                <br><h4 class="font-weight-bold">Последние измерения выше 37 &degC</h4><br>
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">Дата и время измерения</th>
+                            <th scope="col">Значение, &degС</th>
+                            <th scope="col">Пользователь</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for obj in top1_measurement_for_users_gte37 %}
+                            <tr>
+                            <td>{{ obj.datetime_measurement }}</td>
+                            <td>{{ obj.temperature }} </td>
+                            <td>    
+                                <a href="{% url 'bt_measurements_id' obj.user.id %}">
+                                    <img class="rounded-circle account-img-small" src="{{ obj.user.profile.image.url }}">
+                                    <figcaption> {{obj.user.username}} </figcaption>
+                                </a>
+                            </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="border">
+                <br><h4 class="font-weight-bold">Последние измерения для каждого пользователя</h4><br>
+                <table class="table table-bordered align-middle">
+                    <thead>
+                        <tr>
+                            <th scope="col">Дата и время измерения</th>
+                            <th scope="col">Значение, &degС</th>
+                            <th scope="col">Пользователь</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for obj in top1_measurement_for_users %}
+                            <tr>
+                            <td>{{ obj.datetime_measurement }}</td>
+                            <td class="td-data">{{ obj.temperature }} </td>
+                            <td>    
+                                <a href="{% url 'bt_measurements_id' obj.user.id %}">
+                                    <img class="rounded-circle account-img-small" src="{{ obj.user.profile.image.url }}">
+                                    <figcaption> {{obj.user.username}} </figcaption>
+                                </a>
+                            </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>        
+        </div>
+        <div class="col-lg-6 text-center">
+            <div class="border">
+                <h4 class="font-weight-bold">Последние измерения внесены: </h4>
+                <h5 class="font-weight-normal"> {{ dt_last_measurement }} </h5>
+            </div>
+            <div class="border">
+                <h4 class="font-weight-bold">Средняя температура за весь период наблюдений: </h4>
+                <h5 class="font-weight-normal"> {{ average_temperature }} &degC</h5>
+            </div>
+            <div class="border">
+                <h4 class="font-weight-bold"> Количество пользователей: </h4>
+                <h5 class="font-weight-normal"> {{ users_count }} </h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('td.td-data').each(function() {
+        var data = $(this).text()
+        data = parseFloat(data)
+        if (38 > data >= 37.0 ) {
+            $(this).css("background-color", "#F5EA7F")
+        } else if (data >= 38) {
+            $(this).css("background-color", "#F57F7F")
+        }
+    })
+</script>
+
+{% endblock content %}
+

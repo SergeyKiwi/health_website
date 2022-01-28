@@ -1,0 +1,34 @@
+{% extends "body_temperature/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section pt-2 mt-3 shadow-lg"  >
+          <form action="" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">
+                        Введите новое значение температуры
+                    </legend>
+                   <div>Показание температуры:</div>
+                  {{ form.temperature }} &#176;С
+                  <div> Дата и время показания:</div>
+                  <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                      {{ form.datetime_measurement }}
+                    <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    </div>
+                  </div>
+              </fieldset>
+              <div class="form-group">
+                  <button class="btn btn-outline-primary" type="submit"><i class="fas fa-upload"></i> Занести данные</button>
+              </div>
+          </form>
+      </div>
+
+    <script>
+      $("#datetimepicker1").datetimepicker({
+            format: 'YYYY-MM-DD HH:mm',
+            locale: 'ru'
+        });
+    </script>
+
+{% endblock content %}

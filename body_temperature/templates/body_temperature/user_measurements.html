@@ -1,0 +1,43 @@
+{% extends "body_temperature/base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-lg-6 text-center border">
+            <br><h4 class="font-weight-bold">Все Ваши измерения</h4>
+            {% if user.id == person.id %}
+                <a class="nav-link" href="{% url 'bt_measurements_id_new' user.id %}"><i class="fas fa-thermometer-quarter"></i> Внести новые измерения <span class="sr-only">(current)</span></a>
+            {% endif %}
+            <table class="table table-bordered align-middle">
+                <thead>
+                    <tr>
+                        <th scope="col">Дата и время измерения</th>
+                        <th scope="col">Значение, &degС</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for obj in measurements %}
+                        <tr>
+                            <td>{{ obj.datetime_measurement }}</td>
+                            <td>{{ obj.temperature }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-6 text-center">
+            <div class="border">
+                <h4 class="font-weight-bold">Средняя температура за весь период наблюдений: </h4>
+                <h5 class="font-weight-normal"> {{ average_temperature }} &degC</h5>
+            </div> 
+            <div class="border">
+                <h4 class="font-weight-bold">Период наблюдений: </h4>
+                <h5 class="font-weight-normal"> {{ date_interval_for_user }} </h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

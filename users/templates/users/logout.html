@@ -1,0 +1,10 @@
+{% extends "body_temperature/base.html" %}
+{% block content %}
+   <h2>Вы покинули аккаунт</h2>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            <a href="{% url 'login' %}">Снова войти</a>
+        </small>
+    </div>
+   
+{% endblock content %}
