@@ -15,5 +15,3 @@
     <li>Django              4.0.1</li>
     <li>django-crispy-forms 1.13.0</li>
     <li>Pillow              9.0.0</li>
-    
-
