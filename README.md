@@ -11,9 +11,9 @@
     <li>заносить собственные показания температуры тела</li>
     <li>редактировать профиль своего аккаунта</li>
 <h5>Для запуска проекта необходимо установить пакеты Python:
-    - asgiref             3.5.0
-    - Django              4.0.1
-    - django-crispy-forms 1.13.0
-    - Pillow              9.0.0
+    <li>asgiref             3.5.0</li>
+    <li>Django              4.0.1</li>
+    <li>django-crispy-forms 1.13.0</li>
+    <li>Pillow              9.0.0</li>
     
 
