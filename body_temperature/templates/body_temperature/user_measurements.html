@@ -8,13 +8,19 @@
         <div class="col-lg-6 text-center border">
             <br><h4 class="font-weight-bold">Все Ваши измерения</h4>
             {% if user.id == person.id %}
-                <a class="nav-link" href="{% url 'bt_measurements_id_new' user.id %}"><i class="fas fa-thermometer-quarter"></i> Внести новые измерения <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{% url 'bt_measurements_id_new' user.id %}">
+                    <i class="fas fa-thermometer-quarter"></i>
+                        Внести новые измерения <span class="sr-only">(current)</span>
+                </a>
             {% endif %}
             <table class="table table-bordered align-middle">
                 <thead>
                     <tr>
                         <th scope="col">Дата и время измерения</th>
                         <th scope="col">Значение, &degС</th>
+                        {% if user.id == person.id %}
+                            <th scope="col">Удалить значение</th>
+                        {% endif %}
                     </tr>
                 </thead>
                 <tbody>
@@ -22,6 +28,14 @@
                         <tr>
                             <td>{{ obj.datetime_measurement }}</td>
                             <td>{{ obj.temperature }}</td>
+                            {% if user.id == person.id %}
+                                <td>
+                                  <form action="{% url 'delete_measurement' obj.id %}" method="POST">
+                                      {% csrf_token %}
+                                      <input type="submit" class="btn btn-danger" value="-">
+                                  </form>
+                                </td>
+                            {% endif %}
                         </tr>
                     {% endfor %}
                 </tbody>

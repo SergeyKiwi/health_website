@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.http import require_GET, require_POST
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -27,6 +27,16 @@ def index(request):
         'users_with_temperature_gte_37_today': users_with_temperature_gte_37_today
     }
     return render(request, 'body_temperature/home.html', context=context)
+
+
+@require_POST
+def delete_measurement(request, meas_id):
+    temp_meas = get_object_or_404(TemperatureMeasurement, id=meas_id)
+
+    if temp_meas.user == request.user:
+        temp_meas.delete()
+
+    return redirect('bt_measurements_id', request.user.id)
 
 
 @require_GET
