@@ -1,0 +1,4 @@
+asgiref==3.5.0
+Django
+django-crispy-forms==1.13.0
+Pillow==9.0.0
