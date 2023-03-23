@@ -1,10 +1,16 @@
-<h2>Health website</h2>
+# Web application for monitoring the measured body temperature
 
-Этот учебный проект создан с целью совершенствования моих навыков в Django. Процесс разработки не окончен.
+## Application features:
 
-<h4>Проект позволяет всем пользователям:</h4>
-    <li>просматривать показания температуры тела зарегистрированных пользователей</li>
-    <li>получать статистические данные</li>
-<h4>Зарегистрированные пользователи в дополнение могут:</h4>
-    <li>заносить собственные показания температуры тела</li>
-    <li>редактировать профиль своего аккаунта</li>
+- ### SignUp <p> ![signup](./media/screenshots/signup_page.png)
+- ### LogIn <p> ![login](./media/screenshots/login_page.png)
+- ### Measurement statistics of all users <p> ![main_login](./media/screenshots/main_login_page.png)
+- ### Measurement statistics of user <p> ![main_login](./media/screenshots/user_page.png)
+- ### Statistics of the registered user <p> ![main_login](./media/screenshots/user_login_page.png)
+- ### Adding a measurement <p> ![main_login](./media/screenshots/add_temp_page.png)
+
+## Stack:
+ - Python
+ - Django
+ - SQLite
+

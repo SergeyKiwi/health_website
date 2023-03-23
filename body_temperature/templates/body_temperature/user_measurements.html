@@ -6,7 +6,7 @@
     <br>
     <div class="row">
         <div class="col-lg-6 text-center border">
-            <br><h4 class="font-weight-bold">Все Ваши измерения</h4>
+            <br><h4 class="font-weight-bold">Все измерения {{ person.username }}</h4>
             {% if user.id == person.id %}
                 <a class="nav-link" href="{% url 'bt_measurements_id_new' user.id %}">
                     <i class="fas fa-thermometer-quarter"></i>
