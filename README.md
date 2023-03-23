@@ -8,6 +8,7 @@
 - ### Measurement statistics of user <p> ![main_login](./media/screenshots/user_page.png)
 - ### Statistics of the registered user <p> ![main_login](./media/screenshots/user_login_page.png)
 - ### Adding a measurement <p> ![main_login](./media/screenshots/add_temp_page.png)
+- ### Service administration (users, measurements) <p> ![main_login](./media/screenshots/admin_page.png)
 
 ## Stack:
  - Python
